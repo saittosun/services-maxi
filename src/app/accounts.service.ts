@@ -1,6 +1,6 @@
 import { logging } from 'protractor';
 import { LoggingService } from './logging.service';
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +20,8 @@ export class AccountsService {
       status: 'unknown'
     }
   ];
+
+  statusUpdated = new EventEmitter<string>();
   
   constructor(private loggingService: LoggingService) { }
 

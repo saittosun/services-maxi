@@ -8,12 +8,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./new-account.component.css']
 })
 export class NewAccountComponent implements OnInit {
-  
+
   constructor(private loggingService: LoggingService,
-              private accountsService: AccountsService) { }
+              private accountsService: AccountsService) {
+    this.accountsService.statusUpdated.subscribe(
+      (status: string) => alert('new status: ' + status)
+    );
+}
 
   onCreateAccount(accountName: string, accountStatus: string) {
-    this.accountsService.addAccount(accountName, accountStatus)
+    this.accountsService.addAccount(accountName, accountStatus);
     // this.loggingService.logStatusChange(accountStatus);
   }
 
